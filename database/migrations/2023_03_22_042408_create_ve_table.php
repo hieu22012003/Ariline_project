@@ -11,21 +11,25 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('giave', function (Blueprint $table) {
+        Schema::create('ve', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('idkh')->constrained('khachhang')->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->foreignId('idchuyenbay')->constrained('chuyenbay')->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table -> float("gia");
-            $table -> float("loaive");
+            $table->date("ngaydatve");
+            $table->integer("trangthai");
+            $table->foreignId('idgiave')->constrained('giave')->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->string("vitringoi", 255);
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('giave');
+        Schema::dropIfExists('ve');
     }
 };

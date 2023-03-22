@@ -17,7 +17,7 @@ return new class extends Migration
                 ->onDelete('cascade');
             $table->foreignId('idchuyenbay')->constrained('chuyenbay')->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->integer('Giam');
+            $table->float('Giam');
             $table->longText('noidung');
             $table->timestamps();
         });
