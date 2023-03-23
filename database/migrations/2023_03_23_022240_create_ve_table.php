@@ -11,14 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('khuyenmai', function (Blueprint $table) {
+        Schema::create('ve', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('idkh')->constrained('khachhang')->onUpdate('cascade')
+            $table->string("tennguoidi");
+            $table->foreignId('mahoadon')->constrained('hoadon')->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->foreignId('idchuyenbay')->constrained('chuyenbay')->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->float('Giam');
-            $table->longText('noidung');
+            $table->date("ngaydatve");
+            $table->integer("trangthai");
+            $table->foreignId('idgiave')->constrained('giave')->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->string("vitringoi", 255);
             $table->timestamps();
         });
     }
@@ -28,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('khuyenmai');
+        Schema::dropIfExists('ve');
     }
 };
