@@ -7,19 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class KhachHang extends Model
 {
-use HasFactory;
- protected $table = 'khachhang';
- protected $primaryKey= 'id';
- protected $keyType='string';
- protected $fillable=[
-     "name",
-     "email",
-     "sove",
-     "sdt",
-     "address",
-     "cmnd",
-     "birth",
-     "gender"
+    use HasFactory;
+    protected $table = 'khachhang';
+    protected $primaryKey= 'id';
+    protected $keyType='string';
+    protected $fillable=[
+        "name",
+        "email",
+        "sove",
+        "sdt",
+        "address",
+        "cmnd",
+        "birth",
+        "gender"
  ];
 
 }

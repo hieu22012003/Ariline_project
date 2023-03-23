@@ -14,8 +14,6 @@ return new class extends Migration
         Schema::create('ve', function (Blueprint $table) {
             $table->id();
             $table->string("tennguoidi");
-            $table->foreignId('mahoadon')->constrained('hoadon')->onUpdate('cascade')
-                ->onDelete('cascade');
             $table->foreignId('idchuyenbay')->constrained('chuyenbay')->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->date("ngaydatve");

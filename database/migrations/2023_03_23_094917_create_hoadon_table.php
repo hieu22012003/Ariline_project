@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('idkh')->constrained('khachhang')->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->foreignId('mave')->constrained('ve')->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->date("ngaylaphoadon");
             $table->integer("tongtien");
             $table->timestamps();
