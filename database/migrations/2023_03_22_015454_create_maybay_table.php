@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('maybay', function (Blueprint $table) {
             $table->id();
             $table->string("tenmaybay");
-            $table->integer("soghe");
+            $table->integer("tongsoghe");
             $table->timestamps();
         });
     }

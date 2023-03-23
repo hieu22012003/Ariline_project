@@ -13,7 +13,9 @@ class HoaDon extends Model
     protected $keyType="string";
     protected $fillable=[
         "idkh",
+        "mave",
         "ngaylaphoadon",
-        "loaive"
+        "ngaylaphoadon",
+        "tongtiem"
     ];
 }
