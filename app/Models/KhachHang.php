@@ -21,5 +21,13 @@ class KhachHang extends Model
         "birth",
         "gender"
  ];
-
+    public function sanbay1(){
+        return $this->belongsTo(SanBay::class,"sanbaydi","idsanbay");
+    }
+    public function sanbay2(){
+        return $this->belongsTo(SanBay::class,"sanbayden","idsanbay");
+    }
+    public function sanbaydi(){
+        return $this->belongsTo(SanBay::class,"sanbaydi","idsanbay");
+    }
 }

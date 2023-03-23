@@ -15,4 +15,11 @@ class SanBay extends Model
         "tensanbay",
         "tenthanhpho"
     ];
+    public function scopeTenhanhpho($query, $tenthanhpho = '')
+    {
+        if ($tenthanhpho != null && $tenthanhpho != '') {
+            return $query->where("tenthanhpho", "like", "%" . $tenthanhpho . "%");
+        }
+        return $query;
+    }
 }

@@ -14,6 +14,11 @@ class MayBay extends Model
     protected $fillable=[
       "tenmaybay",
       "soghe"
-
     ];
+    public  function  scopeTenmaybay($query,$tenmaybay=''){
+        if($tenmaybay != null && $tenmaybay != ''){
+            return $query->where("tenmaybay","like","%".$tenmaybay."%");
+        }
+        return $query;
+    }
 }

@@ -19,5 +19,12 @@ class Ve extends Model
         "idgiave",
         "vitringoi"
     ];
+    public function sanbay1(){
+        return $this->belongsTo(SanBay::class,"sanbaydi","idsanbay");
+    }
+
+    public function sanbay2(){
+        return $this->belongsTo(SanBay::class,"sanbayden","idsanbay");
+    }
 
 }

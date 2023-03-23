@@ -15,7 +15,16 @@ class HoaDon extends Model
         "idkh",
         "mave",
         "ngaylaphoadon",
-        "ngaylaphoadon",
         "tongtiem"
     ];
+    public  function  scopeID($query,$ID=''){
+        if($ID != null && $ID != ''){
+            return $query->where("idkh","like","%".$ID."%");
+        }
+        return $query;
+    }
+
+    public function khachhang(){
+        return $this->belongsTo(KhachHang::class,'idkh','sdt');
+    }
 }

@@ -16,4 +16,7 @@ class GiaVe extends Model
         "gia",
         "loaive"
     ];
+    public function chuyenbay(){
+        return $this->belongsTo(ChuyenBay::class,"idchuyenbay","idchuyenbay");
+    }
 }
