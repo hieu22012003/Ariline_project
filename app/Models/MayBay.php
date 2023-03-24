@@ -12,8 +12,9 @@ class MayBay extends Model
     protected $primaryKey="id";
     protected $keyType="string";
     protected $fillable=[
+      "hangmaybay",
       "tenmaybay",
-      "soghe"
+      "tongsoghe"
     ];
     public  function  scopeTenmaybay($query,$tenmaybay=''){
         if($tenmaybay != null && $tenmaybay != ''){
