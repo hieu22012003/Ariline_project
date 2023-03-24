@@ -18,8 +18,8 @@ return new class extends Migration
                 ->onDelete('cascade');
             $table->date("ngaydatve");
             $table->integer("trangthai");
-            $table->foreignId('idgiave')->constrained('giave')->onUpdate('cascade')
-                ->onDelete('cascade');
+            $table -> float("gia");
+            $table -> integer("loaive");
             $table->string("vitringoi", 255);
             $table->timestamps();
         });

@@ -16,7 +16,8 @@ class Ve extends Model
         "idchuyenbay",
         "ngaydatve",
         "trangthai",
-        "idgiave",
+        "gia",
+        "loaive",
         "vitringoi"
     ];
     public function sanbay1(){
@@ -26,5 +27,7 @@ class Ve extends Model
     public function sanbay2(){
         return $this->belongsTo(SanBay::class,"sanbayden","idsanbay");
     }
-
+    public function chuyenbay(){
+        return $this->belongsTo(ChuyenBay::class,"idchuyenbay","idchuyenbay");
+    }
 }

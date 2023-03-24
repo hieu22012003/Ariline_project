@@ -29,9 +29,6 @@ class ChuyenBayController extends Controller
         ]);
 
 
-        return view("admin.users.test",[
-            'chuyenbays' => $chuyenbays
-        ]);
     }
 
     public function form(){

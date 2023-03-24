@@ -15,7 +15,7 @@ class HoaDon extends Model
         "idkh",
         "mave",
         "ngaylaphoadon",
-        "tongtiem"
+        "tongtien"
     ];
     public  function  scopeID($query,$ID=''){
         if($ID != null && $ID != ''){
