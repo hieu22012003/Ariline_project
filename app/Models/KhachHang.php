@@ -21,6 +21,12 @@ class KhachHang extends Model
         "birth",
         "gender"
  ];
+    public  function  scopeName($query,$Name=''){
+        if($Name != null && $Name != ''){
+            return $query->where("name","like","%".$Name."%");
+        }
+        return $query;
+    }
     public function sanbay1(){
         return $this->belongsTo(SanBay::class,"sanbaydi","idsanbay");
     }
