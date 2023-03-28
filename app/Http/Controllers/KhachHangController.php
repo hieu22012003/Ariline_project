@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class KhachHangController extends Controller
 {
-    public function all(Request  $request){
+    public function all (Request  $request){
     $paraName = $request->get("name");
     $khachhang= KhachHang::Name($paraName)->simplePaginate(10);
     return view ("admin.khachhang.list-khachhang",[
