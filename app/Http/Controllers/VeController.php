@@ -4,16 +4,18 @@ namespace App\Http\Controllers;
 use App\Models\ChuyenBay;
 use App\Models\ve;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class VeController extends  Controller
 {
     public function all(Request $request)
     {
         $chuyenbay = Chuyenbay::all();
-        $paraTennguoidi = $request->get("tennguoidi");
-        $ve = Ve::Tennguoidi($paraTennguoidi)->simplePaginate(10);
-        return view("admin.ve.list-ve", [
-            "ve" => $ve,
+
+        // $paraTennguoidi = $request->get("tennguoidi");
+        // $ve = Ve::Tennguoidi($paraTennguoidi)->simplePaginate(10);
+        return view("page.ve.index", [
+            // "ve" => $ve,
             "chuyenbay" => $chuyenbay
         ]);
     }
@@ -27,30 +29,49 @@ class VeController extends  Controller
 
     }
 
+    //Controller xử lý dữ liệu ajax truyền lên
     public function create(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'tennguoidi' => 'required|string',
             'idchuyenbay' => 'required',
             'ngaydatve' => 'required',
             'trangthai' => 'required',
-            'giave' => 'required',
+            'gia' => 'required',
             'loaive' => 'required',
             'vitringoi' => 'required',
 
         ], [
             'required' => "Vui lòng nhập thông tin"
         ]);
-        Ve::create([
+
+        //trả thất bại nếu validate sai
+        if ($validator->fails()) {
+            return response()->json(['message' => $validator->errors()], 400);
+        }
+
+        if ($request->ngaydatve) {
+            $ngaydatve = date('Y-m-d', strtotime($request->ngaydatve));
+        }
+
+        $ve = Ve::create([
             "tennguoidi" => $request->get("tennguoidi"),
             "idchuyenbay" => $request->get("idchuyenbay"),
-            "ngaydatve" => $request->get("ngaydatve"),
+            "ngaydatve" => $ngaydatve,
             "trangthai" => $request->get("trangthai"),
             "gia" => $request->get("gia"),
             'loaive' => $request->get("loaive"),
             'vitringoi' => $request->get("vitringoi"),
         ]);
-        return redirect()->to("/ve/list");
+
+        //thành công trả về 200
+        if ($ve) {
+            return response()->json(['data' => $ve], 200);
+        }
+
+        //vì là ajax lên sẽ return về response()->json chứ không trả về view
+        //thất bại trả về 400
+        return response()->json(['data' => ''], 400);
     }
 
     public function edit($id)

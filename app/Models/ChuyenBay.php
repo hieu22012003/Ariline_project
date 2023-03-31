@@ -44,4 +44,15 @@ class ChuyenBay extends Model
         return $query;
     }
 
+    //relationship để lấy dữ liệu theo id
+    public function sanBayDi()
+    {
+        return $this->hasOne(SanBay::class, 'id', 'sanbaydi');
+    }
+
+    public function sanBayDen()
+    {
+        return $this->hasOne(SanBay::class, 'id', 'sanbayden');
+    }
+
 }
